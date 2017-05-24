@@ -9,8 +9,8 @@
 // the form:
 // V(n, n+1...)
 // n being complex numbers
-// This class inherits from the Complex class and
-// from which is creates the complex numbers and stores them
+// This class inherits from the Complex class
+// Creates complex numbers and stores them
 // in the container VectorParts
 // ///////////////////////////////////////////////////////////
 
@@ -24,9 +24,10 @@ class ComplexVector : public Complex {
 
   // Constructors
 
+  /*
+   * Default constructor
+   */
   ComplexVector();
-
-  ComplexVector(Complex& num);
 
   /*
    * Overloaded constructor
@@ -34,18 +35,42 @@ class ComplexVector : public Complex {
    * @param a, c, e, g - Real Numbers
    * @param b, d, f, h - Imaginary
    */
-  ComplexVector(double a, double b, double c, double d, double e, double f,
-                double g, double h);
+  ComplexVector(double a, double b, double c, double d,
+                double e, double f, double g, double h);
 
   /*
    * Copy Constructor
    */
   ComplexVector(const ComplexVector& copy);
 
+  /*
+   * Destructor
+   */
   virtual ~ComplexVector();
 
+  /*
+   * print()
+   * Prints formatted ComplexVector
+   */
   void print() const;
 
+  /*
+   * customize parameters for the recursive sequence function
+   *
+   */
+  enum sequenceComponents {
+    Areal_ = 2,
+    Bimag_ = 3,
+    Creal_ = 7,
+    Dimag_ = 5,
+  };
+
+  /*
+   * Recusive function that computes first 6 terms of sequence:
+   *         (Areal_ + Bimag i ) n
+   * fn+1 = -----------------------    * fn
+   *         Creal_ + Dimag_ * n^2 i
+   */
   void computeSequence(int n);
 
  private:
@@ -57,7 +82,7 @@ class ComplexVector : public Complex {
   friend const ComplexVector operator-(const ComplexVector& lhs, const ComplexVector& rhs);
   friend const ComplexVector operator*(const ComplexVector& lhs, const ComplexVector& rhs);
   friend const ComplexVector operator/(const ComplexVector& lhs, const ComplexVector& rhs);
-
+  friend std::ostream& operator<<(std::ostream& os, const ComplexVector& rhs);
 };
 
 
