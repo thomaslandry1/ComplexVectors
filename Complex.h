@@ -23,10 +23,11 @@ class Complex {
 
   /*
    * Overload constructor
+   * constructs complex number in the format (a + bi)
    * @param a - real component (defaulted to 1.0)
    * @param b - imaginary component (1.0 if not provided)
    */
-  Complex(double a = 1.0, double b = 1.0);
+  explicit Complex(double a = 1.0, double b = 1.0);
 
   //Copy constructor
   Complex(const Complex& copy);
@@ -35,8 +36,8 @@ class Complex {
   virtual ~Complex();
 
  protected:
-  double RealPart_ = 1.0;
-  double ImaginaryPart_ = 1.0;
+  double Real_;
+  double Imag_;
   const std::string ImaginaryUnit_ = "i";
 
   //overloaded operators
